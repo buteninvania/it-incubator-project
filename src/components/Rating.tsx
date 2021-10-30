@@ -1,28 +1,18 @@
 import React from "react";
+import useRatingData from "./../hooks/useRatingData";
 
 function Rating(props: RatingPropsType) {
-    return (
-        <div>
-            <Star selected={true}/>
-            <Star selected={true}/>
-            <Star selected={true}/>
-            <Star selected={false}/>
-            <Star selected={false}/>
-        </div>
-    );
+    const ratingDataArray = useRatingData(props.value)
+    return <div>{ratingDataArray.map((item, index) => <Star key={index} selected={item}/>)}</div>
 }
 
-function Star(props: StarPropsType) {
-    return props.selected ? <span><b>Star</b></span>
-                          : <span>Star</span>
-}
+const Star = (props: StarPropsType) => props.selected ? <span><b>Star</b></span> : <span>Star</span>
 
 export default Rating;
 
 type StarPropsType = {
     selected: boolean
 }
-
 type RatingPropsType = {
-    value: number
+    value: 0 | 1 | 2 | 3 | 4 | 5
 }
