@@ -1,50 +1,40 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-function Accordion(props: AccordionPropsType) {
+function Accordion({title}: AccordionPropsType) {
 
     const [isShow, setIsShow] = useState(false)
 
-    const clickHundler = () => {
-        setIsShow(!isShow)
-    }
+    const accordionClickHundler = () => setIsShow(!isShow)
 
     return (
         <div>
-            <AccordionTitle isShow={clickHundler} title={props.title}/>
-            <AccordionBody isShow={isShow}/>
+            <AccordionTitle isShow={accordionClickHundler} title={title}/>
+            {isShow ? <AccordionBody /> : null}
         </div>
     );
 }
 
-function AccordionTitle(props: AccordionTitleDataProps) {
+function AccordionTitle({isShow}: AccordionTitleDataProps) {
     return (
-        <h3 onClick={() => props.isShow()}>
+        <h3 onClick={isShow} >
             Меню
         </h3>
     );
 }
 
-function AccordionBody(props:AccordionBodyPropsType) {
-
-    if(props.isShow) {
-        return (
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-            </ul>
-        );
-    } else {
-        return <></>
-    }
+function AccordionBody() {
+    return (
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    );
 }
 
 export default Accordion;
 
-type AccordionBodyPropsType = {
-    isShow: boolean
-}
 type AccordionPropsType = {
     title: string
 }

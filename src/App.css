@@ -1,0 +1,20 @@
+.wrapper {
+    background-color: antiquewhite;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.wrapper__title {
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.rating__star {
+    width: 40px;
+    cursor: pointer;
+}
+

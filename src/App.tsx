@@ -5,7 +5,7 @@ import Rating from './components/Rating';
 
 function App() {
     return (
-        <div>
+        <div className="wrapper">
             <PageTitle title="App titile"/>
             <Rating value={3}/>
             <Accordion title={"Меню"}/>
@@ -14,9 +14,9 @@ function App() {
     );
 }
 
-function PageTitle(props: PageTitlePropsType) {
+function PageTitle({title}: PageTitlePropsType) {
     return (
-        <h1>{props.title}</h1>
+        <h1 className="wrapper__title">{title}</h1>
     );
 }
 

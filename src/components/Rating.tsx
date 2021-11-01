@@ -1,12 +1,18 @@
 import React from "react";
 import useRatingData from "./../hooks/useRatingData";
+import StarSvg from "./../img/star.svg";
+import StarGoldSvg from "./../img/starGold.svg";
 
-function Rating(props: RatingPropsType) {
-    const ratingDataArray = useRatingData(props.value)
+import "./../App.css";
+
+function Rating({value}: RatingPropsType) {
+
+    const ratingDataArray = useRatingData(value)
+
     return <div>{ratingDataArray.map((item, index) => <Star key={index} selected={item}/>)}</div>
 }
 
-const Star = (props: StarPropsType) => props.selected ? <span><b>Star</b></span> : <span>Star</span>
+export const Star = ({selected}: StarPropsType) => selected ? <img className="rating__star" src={StarGoldSvg} alt="Star"/> : <img className="rating__star" src={StarSvg} alt="Star"/>
 
 export default Rating;
 
